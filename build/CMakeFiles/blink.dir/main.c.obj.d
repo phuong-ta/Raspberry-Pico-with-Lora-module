@@ -17,6 +17,10 @@ CMakeFiles/blink.dir/main.c.obj: \
  c:\vsarm\armcc\125863~1.3re\arm-none-eabi\include\machine\_types.h \
  c:\vsarm\armcc\125863~1.3re\arm-none-eabi\include\sys\lock.h \
  c:\vsarm\armcc\125863~1.3re\arm-none-eabi\include\sys\stdio.h \
+ c:\vsarm\armcc\125863~1.3re\arm-none-eabi\include\string.h \
+ c:\vsarm\armcc\125863~1.3re\arm-none-eabi\include\sys\_locale.h \
+ c:\vsarm\armcc\125863~1.3re\arm-none-eabi\include\strings.h \
+ c:\vsarm\armcc\125863~1.3re\arm-none-eabi\include\sys\string.h \
  C:\VSARM\sdk\pico\pico-sdk\src\common\pico_stdlib\include/pico/stdlib.h \
  C:\VSARM\sdk\pico\pico-sdk\src\common\pico_base\include/pico.h \
  C:\VSARM\sdk\pico\pico-sdk\src\common\pico_base\include/pico/types.h \
