@@ -124,6 +124,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/blink.dir/C_/VSARM/sdk/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj.d"
   "CMakeFiles/blink.dir/C_/VSARM/sdk/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj"
   "CMakeFiles/blink.dir/C_/VSARM/sdk/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj.d"
+  "CMakeFiles/blink.dir/UART/UART.c.obj"
+  "CMakeFiles/blink.dir/UART/UART.c.obj.d"
   "CMakeFiles/blink.dir/main.c.obj"
   "CMakeFiles/blink.dir/main.c.obj.d"
   "blink.elf"

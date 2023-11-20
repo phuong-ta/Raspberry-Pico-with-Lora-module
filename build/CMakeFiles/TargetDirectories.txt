@@ -1,4 +1,4 @@
-C:/VSARM/sdk/pico/Raspberry-Pico-with-Lora-module/build/CMakeFiles/blink.dir
+C:/VSARM/sdk/pico/Raspberry-Pico-with-Lora-module/build/CMakeFiles/UART.dir
 C:/VSARM/sdk/pico/Raspberry-Pico-with-Lora-module/build/CMakeFiles/edit_cache.dir
 C:/VSARM/sdk/pico/Raspberry-Pico-with-Lora-module/build/CMakeFiles/rebuild_cache.dir
 C:/VSARM/sdk/pico/Raspberry-Pico-with-Lora-module/build/pico-sdk/CMakeFiles/edit_cache.dir

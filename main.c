@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include "pico/stdlib.h"
 #include "hardware/uart.h"
-#include"UART.h"
+#include "UART/UART.h"
 
 #define SW_PIN 8
 #define UART_ID uart0
