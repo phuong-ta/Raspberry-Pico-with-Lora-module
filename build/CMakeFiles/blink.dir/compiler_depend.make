@@ -2638,6 +2638,7 @@ CMakeFiles/blink.dir/C_/VSARM/sdk/pico/pico-sdk/src/rp2_common/pico_unique_id/un
 CMakeFiles/blink.dir/main.c.obj: C:/VSARM/sdk/pico/Raspberry-Pico-with-Lora-module/main.c \
   C:/VSARM/sdk/pico/pico-sdk/src/boards/include/boards/pico.h \
   C:/VSARM/sdk/pico/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  C:/VSARM/sdk/pico/Raspberry-Pico-with-Lora-module/UART.h \
   generated/pico_base/pico/config_autogen.h \
   generated/pico_base/pico/version.h \
   C:/VSARM/sdk/pico/pico-sdk/src/common/pico_base/include/pico.h \
@@ -3045,6 +3046,8 @@ C:/VSARM/sdk/pico/pico-sdk/src/rp2_common/hardware_flash/include/hardware/flash.
 C:/VSARM/sdk/pico/pico-sdk/src/rp2_common/pico_bootrom/include/pico/bootrom.h:
 
 C:/VSARM/sdk/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c:
+
+C:/VSARM/sdk/pico/Raspberry-Pico-with-Lora-module/UART.h:
 
 C:/VSARM/sdk/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c:
 
