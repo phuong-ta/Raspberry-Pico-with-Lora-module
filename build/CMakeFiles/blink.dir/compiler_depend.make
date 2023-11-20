@@ -2674,6 +2674,7 @@ CMakeFiles/blink.dir/main.c.obj: C:/VSARM/sdk/pico/Raspberry-Pico-with-Lora-modu
   C:/VSARM/armcc/12.3\ rel1/arm-none-eabi/include/_ansi.h \
   C:/VSARM/armcc/12.3\ rel1/arm-none-eabi/include/_newlib_version.h \
   C:/VSARM/armcc/12.3\ rel1/arm-none-eabi/include/assert.h \
+  C:/VSARM/armcc/12.3\ rel1/arm-none-eabi/include/ctype.h \
   C:/VSARM/armcc/12.3\ rel1/arm-none-eabi/include/machine/_default_types.h \
   C:/VSARM/armcc/12.3\ rel1/arm-none-eabi/include/machine/_types.h \
   C:/VSARM/armcc/12.3\ rel1/arm-none-eabi/include/machine/ieeefp.h \
@@ -2830,6 +2831,8 @@ C:/VSARM/armcc/12.3\ rel1/lib/gcc/arm-none-eabi/12.3.1/include/stddef.h:
 C:/VSARM/sdk/pico/pico-sdk/src/common/pico_sync/include/pico/sem.h:
 
 C:/VSARM/sdk/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c:
+
+C:/VSARM/armcc/12.3\ rel1/arm-none-eabi/include/ctype.h:
 
 C:/VSARM/sdk/pico/pico-sdk/lib/tinyusb/src/common/tusb_common.h:
 

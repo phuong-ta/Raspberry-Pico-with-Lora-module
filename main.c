@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include "pico/stdlib.h"
 #include "hardware/uart.h"
 
@@ -11,36 +12,34 @@
 #define DATA_BITS 8
 #define STOP_BITS 1
 #define PARITY    UART_PARITY_NONE
-#define STRLEN 40
+#define STRLEN 80
 
 
-// RX interrupt handler
-void on_uart_rx() {
-    char str[STRLEN];
+char* on_uart_rx() {
+    static char str[STRLEN]; // Make it static to preserve its value between function calls
     int pos = 0;
-    if (uart_is_readable_within_us(UART_ID,500)){
-        while(uart_is_readable(UART_ID)) 
-        {
+    /**/
+    while (uart_is_readable_within_us(UART_ID, 500000)) {
+       // while (uart_is_readable(UART_ID)) {
             char c = uart_getc(UART_ID);
-            printf("%c", c);
-            if(c == '\r' || c == '\n') 
-            {
-                str[pos] = '\0';
-                if(strlen(str)>3){
-                    printf("received: %s", str);
-                }
-                pos = 0; // start over after line is printed
-            }
-            else 
-            {
-                if(pos < STRLEN - 1) {
-                str[pos++] = c;
-                }
-            }
-        }
-    }
-}
 
+            if ( c == '\n') {
+                str[pos] = '\0';
+                pos = 0; // start over after line is processed
+                if(strlen(str)){
+                    return str;
+                }
+            } else {
+                if (pos < STRLEN - 1) {
+                    str[pos++] = c;
+                }
+            }
+        //}
+    }
+    // If no complete string is received yet, return NULL or an empty string
+    //pos=0;
+    return NULL;
+}
 int main() {
     // Initialize chosen serial port
     stdio_init_all();
@@ -56,41 +55,99 @@ int main() {
 
     uint count = 0;
     bool flag = 0;
-    //const uint8_t send[] = "AT\r\n";
-
-    while(true) 
-    {
-        if(flag==0 && !gpio_get(SW_PIN)) {
-            count++;
-            flag=1;
-            printf("Counter: %u\n", count);
-            switch (count)
-            {
-            case 1:
-                for (size_t i = 0; i < 5; i++)
-                {
-                    printf("try to connect 5 times\n");
+    const uint8_t command1[] = "AT\r\n";
+    const uint8_t command2[] = "AT+VER\r\n";
+    const uint8_t command3[] = "AT+ID=DevEui\r\n";
+    char* receivedString;
+    /*
+    while(1){
+        if(!gpio_get(SW_PIN)) {
+            sleep_ms(30);
+            if(!gpio_get(SW_PIN)){
+                // 
+                while (uart_is_readable(UART_ID)){
+                    uart_getc(UART_ID);
                 }
-                break;
-            case 2:
-                printf("print version!");
-                break;
-            case 3:
-                printf("print DevEui");
-                break;
-            default:
-                break;
+                uart_write_blocking(uart0, command1, strlen(command1));
+                while (uart_is_readable_within_us(UART_ID, 500000)){
+                    uart_getc(UART_ID);
+                    flag=1;
+                }
+                if(flag){
+                    printf("Connected to LoRa module\n");
+                    flag=0;
+                }else{
+                    printf("Module not responding\n");
+                }
+                //receivedString = on_uart_rx();
             }
+            while(!gpio_get(SW_PIN));
+    }
+    }
+
+    */
+    
+    while(true) 
+    {    
+        if(flag==0 && !gpio_get(SW_PIN)) {
+            //count++;
+            count=1;
+            flag=1;
         }else if (gpio_get(SW_PIN))
         {
             flag=0;
         }
-        
-        if (count>=3)
-        {
-            count=0;
-        }
-        
-        sleep_ms(100);
+        switch (count)
+            {
+            case 1:
+            printf("Counter: %d\n", count);
+                for (size_t i = 0; i < 5; i++)
+                {
+                    uart_write_blocking(uart0, command1, strlen(command1));
+                    receivedString = on_uart_rx();
+                    if (receivedString != NULL) 
+                    {
+                        printf("Connected to LoRa module: %s\n", receivedString);
+                        count=2;
+                        break;
+                    }
+                    if (receivedString == NULL )
+                    {
+                        count=0;
+                        printf("Module not responding\n");
+                    }  
+                }
+                //printf("%d\n",count);
+                break;
+            case 2:
+            printf("Counter: %d\n", count);
+                uart_write_blocking(uart0, command2,  strlen(command2));
+                receivedString = on_uart_rx();
+                if (receivedString != NULL) 
+                {
+                    printf("Version: %s\n", receivedString);
+                    count=3;
+                }else
+                {
+                    printf("Module stopped responding\n");
+                    count=0;
+                }
+                break;
+            case 3:
+                printf("Counter: %d\n", count);
+                uart_write_blocking(uart0, command3,  strlen(command3));
+                receivedString = on_uart_rx();
+                
+                if (receivedString != NULL) 
+                {
+                    printf("%s\n", receivedString);
+                }
+                break;
+            default:
+                break;
+            }
+        sleep_ms(400);
     }
+
+    return 0;
 }
